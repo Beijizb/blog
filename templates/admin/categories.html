@@ -1,0 +1,19 @@
+{{define "title"}}Categories{{end}}
+{{define "content"}}
+<h1 class="text-2xl mb-4">Categories</h1>
+<form action="/admin/categories" method="post" class="mb-4">
+    <input name="name" placeholder="Name" class="border" />
+    <input name="slug" placeholder="Slug" class="border" />
+    <button class="bg-blue-500 text-white px-2">Add</button>
+</form>
+<table class="table-auto w-full">
+<tr><th>Name</th><th>Actions</th></tr>
+{{range .categories}}
+<tr>
+    <td>{{.Name}}</td>
+    <td><a href="/admin/categories/delete/{{.ID}}" class="text-red-500">Delete</a></td>
+</tr>
+{{end}}
+</table>
+{{end}}
+{{template "layout" .}}

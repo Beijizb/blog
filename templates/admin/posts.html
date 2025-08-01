@@ -1,0 +1,19 @@
+{{define "title"}}Posts{{end}}
+{{define "content"}}
+<h1 class="text-2xl mb-4">Posts</h1>
+<a href="/admin/posts/new" class="bg-blue-500 text-white px-2 py-1">New Post</a>
+<table class="table-auto w-full mt-2">
+<tr><th>Title</th><th>Category</th><th>Actions</th></tr>
+{{range .posts}}
+<tr>
+    <td>{{.Title}}</td>
+    <td>{{.Category.Name}}</td>
+    <td>
+        <a href="/admin/posts/edit/{{.ID}}" class="text-blue-500">Edit</a>
+        <a href="/admin/posts/delete/{{.ID}}" class="text-red-500 ml-2">Delete</a>
+    </td>
+</tr>
+{{end}}
+</table>
+{{end}}
+{{template "layout" .}}

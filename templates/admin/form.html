@@ -1,0 +1,32 @@
+{{define "title"}}Post Form{{end}}
+{{define "content"}}
+<h1 class="text-2xl mb-4">Post</h1>
+<form action="{{if .post}}/admin/posts/update/{{.post.ID}}{{else}}/admin/posts{{end}}" method="post" enctype="multipart/form-data" class="bg-white p-4">
+    <div class="mb-2">
+        <label>Title</label>
+        <input name="title" value="{{.post.Title}}" class="border w-full" />
+    </div>
+    <div class="mb-2">
+        <label>Slug</label>
+        <input name="slug" value="{{.post.Slug}}" class="border w-full" />
+    </div>
+    <div class="mb-2">
+        <label>Category</label>
+        <select name="category_id" class="border w-full">
+            {{range .categories}}
+            <option value="{{.ID}}" {{if eq .ID $.post.CategoryID}}selected{{end}}>{{.Name}}</option>
+            {{end}}
+        </select>
+    </div>
+    <div class="mb-2">
+        <label>Content</label>
+        <textarea name="content" class="border w-full" rows="8">{{.post.Content}}</textarea>
+    </div>
+    <div class="mb-2">
+        <label>Cover</label>
+        <input type="file" name="cover" class="border" />
+    </div>
+    <button class="bg-blue-500 text-white px-4 py-2">Save</button>
+</form>
+{{end}}
+{{template "layout" .}}

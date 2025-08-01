@@ -1,0 +1,20 @@
+{{define "title"}}Admin Login{{end}}
+{{define "content"}}
+<div class="max-w-md mx-auto mt-10">
+<form action="/admin/login" method="post" class="bg-white p-4 shadow">
+    <div class="mb-2">
+        <label>Username</label>
+        <input name="username" class="border w-full" />
+    </div>
+    <div class="mb-2">
+        <label>Password</label>
+        <input type="password" name="password" class="border w-full" />
+    </div>
+    {{if .error}}
+    <p class="text-red-500">{{.error}}</p>
+    {{end}}
+    <button class="bg-blue-500 text-white px-4 py-2">Login</button>
+</form>
+</div>
+{{end}}
+{{template "layout" .}}
