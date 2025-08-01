@@ -1,0 +1,15 @@
+{{define "title"}}Home{{end}}
+{{define "content"}}
+<h1 class="text-2xl mb-4">Posts</h1>
+<ul>
+    {{range .posts}}
+    <li class="mb-2">
+        <a href="/post/{{.Slug}}" class="text-blue-500">{{.Title}}</a>
+        <span class="text-gray-500 text-sm ml-2">{{.CreatedAt.Format "2006-01-02"}}</span>
+    </li>
+    {{else}}
+    <li>No posts</li>
+    {{end}}
+</ul>
+{{end}}
+{{template "layout" .}}
